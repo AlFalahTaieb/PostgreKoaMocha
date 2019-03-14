@@ -1,0 +1,31 @@
+{
+  "name": "postgrekoamocha",
+  "version": "1.0.0",
+  "description": "RestfulApi With Postgre",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": " ./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlFalahTaieb/PostgreKoaMocha.git"
+  },
+  "keywords": [
+    "Mocha",
+    "Koa",
+    "Postgre",
+    "Node"
+  ],
+  "author": "Chedli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlFalahTaieb/PostgreKoaMocha/issues"
+  },
+  "homepage": "https://github.com/AlFalahTaieb/PostgreKoaMocha#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "koa": "^2.7.0",
+    "mocha": "^6.0.2"
+  }
+}
