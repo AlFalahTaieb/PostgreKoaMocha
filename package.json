@@ -25,6 +25,7 @@
   "homepage": "https://github.com/AlFalahTaieb/PostgreKoaMocha#readme",
   "dependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "koa": "^2.7.0",
     "mocha": "^6.0.2"
   }
