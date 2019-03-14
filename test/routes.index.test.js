@@ -13,8 +13,9 @@ describe('routes : index', ()=>{
         .get('/')
         .end((err,res)=>{
             should.not.exist(err)
-            res.status.should.eql('application/json')
-            res.type.should.eql('success')
+            res.status.should.eql(200)
+            res.type.should.eql('application/json')
+            res.body.status.should.eql('success')
             res.body.message.should.eql('Hi,Taieb')
             done()
         })
