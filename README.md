@@ -27,3 +27,8 @@ A Restful ClI with Postgre Mocha and Chai & Nodejs
 
 [KoaJs](https://koajs.com/)
 
+[Node-Postgres](https://node-postgres.com/)
+
+[Knex.Js](https://knexjs.org/)  
+
+`Knex.js is a "batteries included" SQL query builder for Postgres, MSSQL, MySQL, MariaDB, SQLite3, Oracle, and Amazon Redshift designed to be flexible, portable, and fun to use.`
