@@ -4,7 +4,7 @@
   "description": "RestfulApi With Postgre",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "node ./src/server/index.js",
     "test": " ./node_modules/mocha/bin/mocha"
   },
   "repository": {
@@ -26,7 +26,9 @@
   "dependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "knex": "^0.16.3",
     "koa": "^2.7.0",
-    "mocha": "^6.0.2"
+    "mocha": "^6.0.2",
+    "pg": "^7.8.2"
   }
 }
