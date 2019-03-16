@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const indexRoutes = require('./routes/index')
+const distroRoutes = require('./routes/distro')
 const app = new Koa()
 
 const PORT = 3000
@@ -12,6 +13,7 @@ app.use(async (ctx) => {
 
 
 app.use(indexRoutes.routes())
+app.use(distroRoutes.routes())
 
 const server = app.listen(PORT, () => {
     console.log(`Server Listening on port: ${PORT}`)
