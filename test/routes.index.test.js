@@ -4,7 +4,7 @@ const chaitHttp = require('chai-http')
 
 chai.use(chaitHttp)
 
-const server = require('../src/index')
+const server = require('../src/server/index')
 
 
 describe('routes : index', ()=>{
