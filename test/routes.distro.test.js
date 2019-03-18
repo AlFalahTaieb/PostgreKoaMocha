@@ -9,6 +9,8 @@ chai.use(chaiHttp)
 const server = require('../src/server/index')
 const knex = require('../src/server/db/connection')
 const request = chai.request(server).keepOpen()
+
+
 describe('routes : dist', () => {
     beforeEach(() => {
         return knex.migrate.rollback()
@@ -31,17 +33,17 @@ describe('GET /dist', () => {
       .end((err, res) => {
 
         should.not.exist(err)
-
+        console.log(res.status)
         res.status.should.equal(200)
 
         res.type.should.equal('application/json')
 
         res.body.status.should.eql('success')
 
-        res.body.data.length.should.eql(0)
+        res.body.data.length.should.eql(3)
 
 
-        res.body.data[3].should.include.keys(
+        res.body.data[0].should.include.keys(
           'id', 'name', 'basedOn', 'rating', 'explicit'
         )
         done()
