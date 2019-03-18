@@ -3,32 +3,20 @@ const router = new Router()
 
 const queries = require('../db/queries/distro')
 
-const BASE_URL = '/distro'
+const BASE_URL = '/dist'
 
 
 router.get(BASE_URL, async (ctx) => {
     try {
-        const distro= await queries.getAllDistros()
+        const dist= await queries.getAllDistros()
         ctx.body = {
             status: 'success',
-            data: distro
+            data: dist
         }
     } catch (err) {
         console.log(err)
     }
 })
 
-// module.exports = router
-
-// const Router = require('koa-router')
-// const router = new Router()
-
-
-// router.get('/dist', async (ctx) => {
-//     ctx.body = {
-//         status: 'success',
-//         message: 'SHIIIIIIIIIIIIIIIt'
-//     }
-// })
 
 module.exports = router

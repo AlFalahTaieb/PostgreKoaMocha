@@ -2,14 +2,16 @@ const chai = require('chai')
 const should = chai.should()
 const chaitHttp = require('chai-http')
 
+
 chai.use(chaitHttp)
 
 const server = require('../src/server/index')
+const request = chai.request(server).keepOpen()
 
 
 describe('routes : index', ()=>{
     it('should return json',(done) =>{
-        chai.request(server)
+        request
         .get('/')
         .end((err,res)=>{
             should.not.exist(err)
