@@ -6,12 +6,12 @@ const chaitHttp = require('chai-http')
 chai.use(chaitHttp)
 
 const server = require('../src/server/index')
-const request = chai.request(server).keepOpen()
+
 
 
 describe('routes : index', ()=>{
     it('should return json',(done) =>{
-        request
+        chai.request(server)
         .get('/')
         .end((err,res)=>{
             should.not.exist(err)
