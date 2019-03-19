@@ -8,12 +8,33 @@ const BASE_URL = '/dist'
 
 router.get(BASE_URL, async (ctx) => {
     try {
-        const dist= await queries.getAllDistros()
+        const dist = await queries.getAllDistros()
         ctx.body = {
             status: 'success',
             data: dist
         }
     } catch (err) {
+        console.log(err)
+    }
+})
+
+router.get(`{BASE_URL}/:id`, async (ctx) => {
+    try {
+        const movie = await queries.getOneDistro(ctx.params.id)
+        if (distro.length) {
+            ctx.body = {
+                stutus: 'success',
+                data: dist
+            }
+        } else {
+            ctx.status = 404
+            ctx.body = {
+                status: 'error',
+                message: `This distro doesn't exist`
+            }
+        }
+    }
+    catch (err) {
         console.log(err)
     }
 })
