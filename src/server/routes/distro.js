@@ -24,7 +24,7 @@ router.get(`${BASE_URL}/:id`, async (ctx) => {
         const distro = await queries.getSingleDistro(ctx.params.id)
         if (distro.length) {
             ctx.body = {
-                stutus: 'success',
+                status: 'success',
                 data: distro
             }
         } else {
