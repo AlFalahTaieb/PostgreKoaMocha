@@ -59,8 +59,26 @@ describe('routes : dist', () => {
             )
             done()
           })
-      })
+      }),
+
+        it('should return one distro', (done) => {
+          chai.request(server)
+            .get('/dist/42')
+            .end((err, res) => {
+
+              res.status.should.equal(404)
+
+              res.type.should.equal('application/json')
+
+              res.body.status.should.eql('error')
+              res.body.message.should.eql(`This distro doesn't exist`)
+              done()
+            })
+        })
     })
+
+
+
 
 
 
