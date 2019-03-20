@@ -11,8 +11,14 @@ function getSingleDistro(id){
     .where({ id: parseInt(id) })
 }
 
+addDistro=(distro)=>{
+  return knex('dist')
+  .insert(distro)
+  .returning('*')
+}
+
 module.exports = {
   getAllDistros,
-  getSingleDistro
-
+  getSingleDistro,
+  addDistro
 }
