@@ -94,7 +94,7 @@ describe('routes : dist', () => {
 describe('GET dist/:id ', () => {
   it('should throw an error if the movie does not exist', (done) => {
     chai.request(server)
-      .get('dist/9999999')
+      .get('/dist/9999999')
       .end((err, res) => {
         should.exist(err)
         res.status.should.equal(404)
@@ -106,13 +106,12 @@ describe('GET dist/:id ', () => {
   })
   it ('should return one distro', (done) => {
     chai.request(server)
-      .get('/dist/1')
+      .get('/dist/3')
       .end((err, res) => {
         should.not.exist(err)
         res.status.should.equal(200)
         res.type.should.equal('application/json')
         res.body.status.should.equal('success')
-
         res.body.data[0].should.include.keys(
           'id', 'name', 'basedOn', 'rating', 'explicit'
         )

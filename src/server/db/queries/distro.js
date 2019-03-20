@@ -5,7 +5,7 @@ getAllDistros = () => {
   return knex('dist')
     .select('*');
 }
-getSingleDistro = (id) => {
+function getSingleDistro(id){
   return knex('dist')
     .select('*')
     .where({ id: parseInt(id) })

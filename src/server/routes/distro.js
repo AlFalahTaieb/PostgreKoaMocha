@@ -18,13 +18,14 @@ router.get(BASE_URL, async (ctx) => {
     }
 })
 
-router.get(`{BASE_URL}/:id`, async (ctx) => {
+router.get(`${BASE_URL}/:id`, async (ctx) => {
+
     try {
-        const movie = await queries.getOneDistro(ctx.params.id)
+        const distro = await queries.getSingleDistro(ctx.params.id)
         if (distro.length) {
             ctx.body = {
                 stutus: 'success',
-                data: dist
+                data: distro
             }
         } else {
             ctx.status = 404
@@ -38,6 +39,8 @@ router.get(`{BASE_URL}/:id`, async (ctx) => {
         console.log(err)
     }
 })
+
+
 
 
 module.exports = router
