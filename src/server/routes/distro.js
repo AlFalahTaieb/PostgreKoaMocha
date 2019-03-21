@@ -89,6 +89,31 @@ router.put(`${BASE_URL}/:id`, async (ctx) => {
     }
 })
 
+router.delete(`${BASE_URL}/:id`, async (ctx) => {
+    try {
+        const distro = await queries.deleteDistro(ctx.params.id)
+        if (distro.length) {
+            ctx.status = 200
+            ctx.body = {
+                status: 'success',
+                data: distro
+            }
+        } else {
+            ctx.status = 404
+            ctx.body = {
+                status: 'error',
+                message: 'Distro does not exist'
+            }
+        }
+    } catch (err) {
+        ctx.status = 400
+        ctx.body = {
+            status: 'error',
+            message: err.message || 'An error has occuried'
+        }
+    }
+})
+
 
 
 module.exports = router

@@ -24,9 +24,17 @@ updateDistro=(id,distro)=>{
   .returning('*')
 }
 
+deleteDistro=(id)=>{
+  return knex('dist')
+  .del()
+  .where({id:parseInt(id)}) // changer le String en entier
+  .returning('*')
+}
+
 module.exports = {
   getAllDistros,
   getSingleDistro,
   addDistro,
-  updateDistro
+  updateDistro,
+  deleteDistro
 }

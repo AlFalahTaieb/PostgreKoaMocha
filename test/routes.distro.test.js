@@ -155,7 +155,46 @@ describe('routes : dist', () => {
       })
   })
 
+  describe('DELETE /dist/:id', () => {
 
+    it('should delete the distro', (done) => {
+      knex('dist')
+        .select('*')
+        .then((distro) => {
+          const distObj = distro[0]
+          const lengthBeforeDelete = distro.length
+          chai.request(server)
+            .delete(`/dist/${distObj.id}`)
+            .end((err, res) => {
+              should.not.exist(err)
+              res.status.should.equal(200)
+              res.type.should.equal('application/json')
+              res.body.status.should.eql('success')
+              res.body.data[0].should.include.keys(
+                'id', 'name', 'basedOn', 'rating', 'explicit'
+              )
+             knex('dist').select('*')
+             .then((updateDistro)=>{
+               updateDistro.length.should.eql(lengthBeforeDelete - 1)
+             })
+              done()
 
+            })
+        })
+    }),
+    it('should throw an error', (done) => {
+      chai.request(server)
+        .delete('/dist/999999')
+        .send({
+          rating: 9.6
+        })
+        .end((err, res) => {
+          res.status.should.equal(404)
+          res.type.should.equal('application/json')
+          res.body.status.should.eql('error')
+          should.exist(res.body.message)
+          done()
+        })
+    })
+  })
 })
-
