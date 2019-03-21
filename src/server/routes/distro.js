@@ -28,7 +28,7 @@ router.get(`${BASE_URL}/:id`, async (ctx) => {
                 data: distro
             }
         } else {
-            ctx.status =  404
+            ctx.status = 404
             ctx.body = {
                 status: 'error',
                 message: `This distro doesn't exist`
@@ -57,11 +57,35 @@ router.post(`${BASE_URL}`, async (ctx) => {
             }
         }
     } catch (err) {
-       ctx.status= 400
-       ctx.body={
-           status :'error',
-           message: err.message || 'An error has occuried'
-       }
+        ctx.status = 400
+        ctx.body = {
+            status: 'error',
+            message: err.message || 'An error has occuried'
+        }
+    }
+})
+router.put(`${BASE_URL}/:id`, async (ctx) => {
+    try {
+        const distro = await queries.updateDistro(ctx.params.id, ctx.request.body)
+        if (distro.length) {
+            ctx.status = 200
+            ctx.body = {
+                status: 'success',
+                data: distro
+            }
+        } else {
+            ctx.status = 404
+            ctx.body = {
+                status: 'error',
+                message: 'Distro does not exist'
+            }
+        }
+    } catch (err) {
+        ctx.status = 400
+        ctx.body = {
+            status: 'error',
+            message: err.message || 'An error has occuried'
+        }
     }
 })
 
